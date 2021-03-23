@@ -1,7 +1,7 @@
 // last updated 23.03.21
 const dillDallClassNames = ["breaking--pulsating-dots", "breaking--just-now", "breaking--pulse-kicker", "pulse", "breaking-dots"]
-/* const dillDallBgColors = ["bg-red", "bg-yellow", "bg-black"]
-const dillDallFontColors = ["text-red"] */
+const bgColors = ["bg-red", "bg-yellow", "bg-black"]
+const fontColors = ["text-red"]
 
 const removeClassnames = (className) => {
     const domElements = document.querySelectorAll(`.${className}`)
@@ -18,20 +18,32 @@ const easterMode = () => {
 }
 
 const removeDillDall = () => {
-    console.log("removign")
     dillDallClassNames.forEach(className=> {
+        removeClassnames(className)
+    })
+}
+
+const removeBgColors = () => {
+    bgColors.forEach(className=> {
+        removeClassnames(className)
+    })
+}
+
+const removeFontColors = () => {
+    fontColors.forEach(className=> {
         removeClassnames(className)
     })
 }
 
 //message listener for background
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    /* Todo, fix here. Better messaging system */
     if(request.command === 'init'){
         removeDillDall( )
     }else{
         location.reload()
     }
-    sendResponse({result: "success"});
+    sendResponse({result: "success!"});
 });
 
 //on init perform based on chrome stroage value
