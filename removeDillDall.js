@@ -3,21 +3,18 @@ const dillDallCheck = document.getElementById('dillDallCheck');
 
 //on init update the UI checkbox based on storage
 chrome.storage.sync.get('hideDillDall', (data) => {
-    dillDallCheck.checked = data.hide;
+    console.log(data,"data")
+    dillDallCheck.checked = data.hideDillDall;
 });
 
 dillDallCheck.onchange =  (event) => {
-    
-    
   const hideDillDall = event.target?.checked || false
   console.log(hideDillDall, "hideDillDall")
   //update the extension storage value
   chrome.storage.sync.set({ hideDillDall }, () => console.log('Hide dilldall: '+ hideDillDall));
   
-console.log("here!")
   
   if (hideDillDall) {
-      console.log("if is true")
     sendMessage("init", hideDillDall)
   } else {
     sendMessage("remove", hideDillDall)
