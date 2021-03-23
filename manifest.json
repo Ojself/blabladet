@@ -1,0 +1,29 @@
+{
+    "manifest_version": 2,
+    "name": "Blabladet",
+    "description": "Fjerner unødvendig dilldall fra kjent nettavis",
+    "version": "0.0.1",
+    "permissions": ["storage","activeTab","declarativeContent"],
+    "page_action": {
+        "default_title": "Blabladet",
+        "default_popup": "index.html",
+        "default_icon": {
+            "16": "assets/16.png",
+            "32": "assets/32.png",
+            "48": "assets/48.png",
+            "128": "assets/128.png"
+        }
+    },
+    "author": "Tormod Flesjø",
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://www.dagbladet.no/*"],
+            "js": ["content.js"],
+            "css": ["styles.css"]
+        }
+    ]
+}
