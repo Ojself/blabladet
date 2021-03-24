@@ -13,3 +13,9 @@
 <img src="assets/before_preview.gif" alt="Before" width="350" height="600">
 <img src="assets/after_preview.png" alt="alt text" width="350" height="600">
 </p>
+
+### Known issues
+
+- Code is violating dry principles
+- Chrome api query/broadcasting is acting unstable.
+- DOM manipulation happens before whole dom is loaded causing unmutated articls in bottom of page
