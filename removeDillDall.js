@@ -1,4 +1,9 @@
 const dillDallCheck = document.getElementById('dillDallCheck');
+const bgColorCheck = document.getElementById('bgColorCheck');
+const blackFontCheck = document.getElementById('blackFontCheck');
+const easterModeCheck = document.getElementById('easterModeCheck');
+
+const allCheckBoxes = []
 
 
 //on init update the UI checkbox based on storage
@@ -6,9 +11,20 @@ chrome.storage.sync.get('hideDillDall', (data) => {
     dillDallCheck.checked = data.hideDillDall;
 });
 
-dillDallCheck.onchange =  (event) => {
+chrome.storage.sync.get('hideBgColor', (data) => {
+  bgColorCheck.checked = data.hideBgColor;
+});
+
+chrome.storage.sync.get('hideFontColor', (data) => {
+  blackFontCheck.checked = data.hideFontColor;
+});
+
+chrome.storage.sync.get('easterMode', (data) => {
+  easterModeCheck.checked = data.easterMode;
+});
+
+bgColorCheck.onchange =  (event) => {
   const hideDillDall = event.target?.checked || false
-  //update the extension storage value
   chrome.storage.sync.set({ hideDillDall }, () => console.log('Hide dilldall: '+ hideDillDall));
   
   
@@ -16,6 +32,19 @@ dillDallCheck.onchange =  (event) => {
     sendMessage("init", hideDillDall)
   } else {
     sendMessage("reload", hideDillDall)
+  }
+};
+
+
+
+bgColorCheck.onchange =  (event) => {
+  const hideBgColor = event.target?.checked || false
+  chrome.storage.sync.set({ hideBgColor }, () => console.log('Hide Background color: '+ hideBgColor));
+
+  if (hideBgColor) {
+    sendMessage("init", hideBgColor)
+  } else {
+    sendMessage("reload", hideBgColor)
   }
 };
 
