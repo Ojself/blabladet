@@ -1,10 +1,16 @@
 # Blabladet
 
-![Blabladet](assets/128.png)
-
 [Chrome Extension](https://chrome.google.com/webstore/detail/blabladet/gffhghfcjpmgohnafihgfkifbamnpibe?hl=no)
+<br />
+<br />
+<br />
 
-##### Available in the web store in near future
+Remember to check off what you want to change in the extension<br />
+<img src="assets/popup_preview.png" alt="alt text" width="350" height="200"><br />
+<br />
+<br />
+<br />
+<br />
 
 <p float="left">
 <h1>BEFORE AND AFTER:</h1>

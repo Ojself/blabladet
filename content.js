@@ -1,9 +1,8 @@
-// last updated 23.03.21
-const dillDallClassNames = ["breaking--pulsating-dots", "breaking--just-now", "breaking--pulse-kicker", "pulse", "breaking-dots"]
+// last updated 24.03.21
+const dillDallClassNames = ["breaking--pulsating-dots", "breaking--just-now","breaking--just-now-wave", "breaking--pulse-kicker", "pulse", "breaking-dots"]
 const bgColors = ["bg-red", "bg-yellow", "bg-black"]
-const fontColors = ["text-red"]
 
-const chromeStorageNames = ["hideDillDall", "hideBgColor", "hideFontColor", "easterMode"]
+const chromeStorageNames = ["hideDillDall", "hideBgColor", "easterMode"]
 
 const removeClassnames = (className) => {
     const domElements = document.querySelectorAll(`.${className}`)
@@ -24,12 +23,6 @@ const hideBgColors = () => {
     })
 }
 
-const hideFontColors = () => {
-    fontColors.forEach(className=> {
-        removeClassnames(className)
-    })
-}
-
 const activateEasterMode = () => {
     const articles = document.querySelectorAll("article")
     for (const article of articles){
@@ -40,8 +33,9 @@ const activateEasterMode = () => {
 //message listener for background
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const [cmd,value] = Object.entries(request)[0]
+    // User has deactivated a feature and page will reload
     if (!value)return location.reload()
-    findCommand(cmd)
+    executeCommand(cmd)
     sendResponse({result: "success!"});
 });
 
@@ -51,21 +45,18 @@ window.onload = () => {
         chrome.storage.sync.get(name, (data) => {
             const [cmd,value] = Object.entries(data)[0]
             if (!value)return 
-            findCommand(cmd)
+            executeCommand(cmd)
         });
     })  
 }
 
-const findCommand = (cmd) => {
+const executeCommand = (cmd) => {
     switch (cmd) {
         case "hideDillDall":
             hideDillDall()    
             break;
         case "hideBgColor":
             hideBgColors()
-            break;
-        case "hideFontColor":
-            hideFontColors()    
             break;
         case "easterMode":
             activateEasterMode()    

@@ -1,44 +1,34 @@
 const dillDallCheck = document.getElementById('dillDallCheck');
 const bgColorCheck = document.getElementById('bgColorCheck');
-const blackFontCheck = document.getElementById('blackFontCheck');
 const easterModeCheck = document.getElementById('easterModeCheck');
 
-const chromeStorageNames = ["hideDillDall", "hideBgColor", "hideFontColor", "easterMode"]
+const chromeStorageNames = {
+  "hideDillDall": dillDallCheck,
+  "hideBgColor": bgColorCheck,
+  "easterMode":easterModeCheck
+}
 
 //on init update the UI checkbox based on storage
-chromeStorageNames.forEach(name=> {
+Object.keys(chromeStorageNames).forEach(name=> {
   chrome.storage.sync.get(name, (data) => {
-    [name].checked = data[name];
+   if (data[name]){
+    chromeStorageNames[name].checked = true
+   }
   });
 })
 
-// not very DRY .. 
-dillDallCheck.onchange =  (event) => {
- const hideDillDall = event.target?.checked || false
-  chrome.storage.sync.set({ hideDillDall }, () => console.log('Hide dilldall: '+ hideDillDall));
-  sendMessage({hideDillDall})
-};
 
-bgColorCheck.onchange =  (event) => {
- const hideBgColor = event.target?.checked || false
-  chrome.storage.sync.set({ hideBgColor }, () => console.log('Hide Background color: '+ hideBgColor));
-  sendMessage({hideBgColor})
-  
-};
+Object.entries(chromeStorageNames).forEach(([name, popDomElement])=> {
+  popDomElement.onchange =  (event) => {
+    const checked = event.target?.checked || false
+    console.log(checked)
+     chrome.storage.sync.set({ [name]: checked }, () => console.log(`${name} ${checked}`));
+     sendMessage({[name]: checked})
+   };
 
-blackFontCheck.onchange =  (event) => {
- const hideFontColor = event.target?.checked || false
-  chrome.storage.sync.set({ hideFontColor }, () => console.log('Hide Background color: '+ hideFontColor));
-  sendMessage({hideFontColor})
-};
+  })
 
-easterModeCheck.onchange =  (event) => {
- const easterMode = event.target?.checked || false
-  chrome.storage.sync.set({ easterMode }, () => console.log('Hide Background color: '+ easterMode));
-  sendMessage({easterMode})
-};
-
-//Pass init or remove message to content script 
+// Broadcast message
 const sendMessage = (target) => {
     chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
         chrome.tabs.sendMessage(tabs[0].id, target, (response) => console.log('response: ',response));
