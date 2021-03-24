@@ -2,7 +2,7 @@
 
 ![Blabladet](assets/128.png)
 
-##### Crome extension
+[Chrome Extension](https://chrome.google.com/webstore/detail/blabladet/gffhghfcjpmgohnafihgfkifbamnpibe?hl=no)
 
 ##### Available in the web store in near future
 
