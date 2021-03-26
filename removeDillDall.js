@@ -21,7 +21,6 @@ Object.keys(chromeStorageNames).forEach(name=> {
 Object.entries(chromeStorageNames).forEach(([name, popDomElement])=> {
   popDomElement.onchange =  (event) => {
     const checked = event.target?.checked || false
-    console.log(checked)
      chrome.storage.sync.set({ [name]: checked }, () => console.log(`${name} ${checked}`));
      sendMessage({[name]: checked})
    };

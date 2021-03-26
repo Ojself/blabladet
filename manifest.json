@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Blabladet",
     "description": "Fjerner unødvendig dilldall fra kjent nettavis",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "permissions": ["storage","activeTab","declarativeContent"],
     "page_action": {
         "default_title": "Blabladet",
