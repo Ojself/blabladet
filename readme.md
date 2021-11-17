@@ -21,4 +21,4 @@ Remember to check off what you want to change in the extension<br />
 </p>
 
 ### Changelog
-0.1.1 17.11.2021 - Add "DAGBLADET AVSLØRER" and misc red text on ban list
+0.1.1 - 17.11.2021 Add "DAGBLADET AVSLØRER" and misc red text on ban list
