@@ -20,8 +20,5 @@ Remember to check off what you want to change in the extension<br />
 <img src="assets/after_preview.png" alt="alt text" width="350" height="600">
 </p>
 
-### Known issues
-
-- Code is violating dry principles
-- Chrome api query/broadcasting is acting unstable.
-- DOM manipulation happens before whole dom is loaded causing unmutated articls in bottom of page
+### Changelog
+0.1.1 17.11.2021 - Add "DAGBLADET AVSLØRER" and misc red text on ban list
