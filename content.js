@@ -1,5 +1,5 @@
 // last updated 24.03.21
-const dillDallClassNames = ["breaking--pulsating-dots", "breaking--just-now","breaking--just-now-wave", "breaking--pulse-kicker", "pulse", "breaking-dots"]
+const dillDallClassNames = ["breaking--pulsating-dots", "breaking--just-now","breaking--just-now-wave", "breaking--pulse-kicker", "pulse", "breaking-dots", "text-red", "breaking--dbavslorer"]
 const bgColors = ["bg-red", "bg-yellow", "bg-black"]
 
 const chromeStorageNames = ["hideDillDall", "hideBgColor", "easterMode"]
